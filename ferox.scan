@@ -1,0 +1,345 @@
+Configuration {
+    kind: "configuration",
+    wordlist: "/usr/share/wordlists/seclists/Discovery/Web-Content/big.txt",
+    config: "/etc/feroxbuster/ferox-config.toml",
+    proxy: "",
+    replay_proxy: "",
+    server_certs: [],
+    client_cert: "",
+    client_key: "",
+    target_url: "http://192.168.194.217",
+    status_codes: [
+        100,
+        101,
+        102,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        226,
+        300,
+        301,
+        302,
+        303,
+        304,
+        305,
+        307,
+        308,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414,
+        415,
+        416,
+        417,
+        418,
+        421,
+        422,
+        423,
+        424,
+        426,
+        428,
+        429,
+        431,
+        451,
+        500,
+        501,
+        502,
+        503,
+        504,
+        505,
+        506,
+        507,
+        508,
+        510,
+        511,
+        103,
+        425,
+    ],
+    replay_codes: [
+        100,
+        101,
+        102,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        226,
+        300,
+        301,
+        302,
+        303,
+        304,
+        305,
+        307,
+        308,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414,
+        415,
+        416,
+        417,
+        418,
+        421,
+        422,
+        423,
+        424,
+        426,
+        428,
+        429,
+        431,
+        451,
+        500,
+        501,
+        502,
+        503,
+        504,
+        505,
+        506,
+        507,
+        508,
+        510,
+        511,
+        103,
+        425,
+    ],
+    filter_status: [],
+    client: Client {
+        accepts: Accepts,
+        proxies: [
+            Proxy(
+                System(
+                    {},
+                ),
+                None,
+            ),
+        ],
+        redirect_policy: Policy(
+            None,
+        ),
+        referer: true,
+        default_headers: {
+            "accept": "*/*",
+            "user-agent": "feroxbuster/2.11.0",
+        },
+        timeout: 7s,
+    },
+    replay_client: None,
+    threads: 50,
+    timeout: 7,
+    verbosity: 0,
+    silent: false,
+    quiet: false,
+    output_level: Default,
+    auto_bail: false,
+    auto_tune: false,
+    requester_policy: Default,
+    json: false,
+    output: "ferox.scan",
+    debug_log: "",
+    user_agent: "feroxbuster/2.11.0",
+    random_agent: false,
+    redirects: false,
+    insecure: false,
+    extensions: [],
+    methods: [
+        "GET",
+    ],
+    data: [],
+    headers: {},
+    queries: [],
+    no_recursion: false,
+    extract_links: true,
+    add_slash: false,
+    stdin: false,
+    depth: 4,
+    scan_limit: 0,
+    parallel: 0,
+    rate_limit: 0,
+    filter_size: [],
+    filter_line_count: [],
+    filter_word_count: [],
+    filter_regex: [],
+    dont_filter: false,
+    resumed: false,
+    resume_from: "",
+    save_state: true,
+    time_limit: "",
+    filter_similar: [],
+    url_denylist: [],
+    regex_denylist: [],
+    collect_extensions: false,
+    dont_collect: [
+        "tif",
+        "tiff",
+        "ico",
+        "cur",
+        "bmp",
+        "webp",
+        "svg",
+        "png",
+        "jpg",
+        "jpeg",
+        "jfif",
+        "gif",
+        "avif",
+        "apng",
+        "pjpeg",
+        "pjp",
+        "mov",
+        "wav",
+        "mpg",
+        "mpeg",
+        "mp3",
+        "mp4",
+        "m4a",
+        "m4p",
+        "m4v",
+        "ogg",
+        "webm",
+        "ogv",
+        "oga",
+        "flac",
+        "aac",
+        "3gp",
+        "css",
+        "zip",
+        "xls",
+        "xml",
+        "gz",
+        "tgz",
+    ],
+    collect_backups: false,
+    backup_extensions: [
+        "~",
+        ".bak",
+        ".bak2",
+        ".old",
+        ".1",
+    ],
+    collect_words: false,
+    force_recursion: false,
+    update_app: false,
+    scan_dir_listings: false,
+    request_file: "",
+    protocol: "https",
+    limit_bars: 0,
+}
+200      GET        7l      152w     8833c http://192.168.194.217/js/jquery.waypoints.min.js
+200      GET      425l      806w    11278c http://192.168.194.217/css/roadmap.css
+200      GET       88l      266w     2936c http://192.168.194.217/js/jquery.countup.js
+200      GET        1l      281w    14239c http://192.168.194.217/js/aos.js
+200      GET        1l      218w    26053c http://192.168.194.217/css/aos.css
+200      GET      164l      880w    67057c http://192.168.194.217/images/g2.jpg
+200      GET     2675l     4607w    43229c http://192.168.194.217/css/fontawesome-all.css
+200      GET      149l     1044w    90461c http://192.168.194.217/images/g9.jpg
+200      GET      161l      291w     3294c http://192.168.194.217/css/snow.css
+200      GET      393l      705w     6444c http://192.168.194.217/css/aos-animation.css
+200      GET        5l       24w     1330c http://192.168.194.217/js/move-top.js
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.194.217/js/ (Apache)
+200      GET      141l      837w     4759c http://192.168.194.217/js/easing.js
+200      GET      180l      526w     4509c http://192.168.194.217/js/jquery.roadmap.js
+200      GET      358l      653w     9491c http://192.168.194.217/js/simpleLightbox.js
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.194.217/images/ (Apache)
+200      GET      154l      597w    43585c http://192.168.194.217/images/g4.jpg
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.194.217/css/ (Apache)
+200      GET        3l       14w      551c http://192.168.194.217/images/move_up.png
+200      GET        6l       35w     1912c http://192.168.194.217/images/next.png
+200      GET        4l       10w      446c http://192.168.194.217/images/close.png
+200      GET        8l       39w     1877c http://192.168.194.217/images/prev.png
+200      GET      366l      943w    70138c http://192.168.194.217/images/g7.jpg
+200      GET     1695l     3032w    31530c http://192.168.194.217/css/style.css
+200      GET      294l      543w     4898c http://192.168.194.217/css/simpleLightbox.css
+200      GET      109l      760w    54047c http://192.168.194.217/images/g6.jpg
+200      GET      149l      851w    61925c http://192.168.194.217/images/g3.jpg
+200      GET      399l     1169w   103404c http://192.168.194.217/images/g8.jpg
+200      GET      233l     1180w    88988c http://192.168.194.217/images/g5.jpg
+200      GET      986l     2382w    46199c http://192.168.194.217/index.html
+200      GET      140l      718w    55053c http://192.168.194.217/images/g1.jpg
+200      GET        4l     1338w    85659c http://192.168.194.217/js/jquery-2.2.3.min.js
+200      GET       81l      532w   119651c http://192.168.194.217/images/exp.jpg
+200      GET     3894l     9624w   115048c http://192.168.194.217/js/bootstrap.js
+200      GET     8975l    17530w   178152c http://192.168.194.217/css/bootstrap.css
+200      GET      986l     2382w    46199c http://192.168.194.217/
+200      GET      623l     6015w   284765c http://192.168.194.217/images/contact.jpg
+200      GET       32l      115w     2661c http://192.168.194.217/images/loader.gif
+200      GET      389l     2462w   315983c http://192.168.194.217/images/testimonials.jpg
+200      GET      576l     4796w   385120c http://192.168.194.217/images/serve.jpg
+200      GET      169l     1167w   298048c http://192.168.194.217/images/banner.jpg
+200      GET      791l     3804w   305831c http://192.168.194.217/images/stats.jpg
+301      GET        9l       28w      319c http://192.168.194.217/assets => http://192.168.194.217/assets/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.194.217/assets (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.194.217/assets/js (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.194.217/assets/fonts (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.194.217/assets/images (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.194.217/assets/css (Apache)
+200      GET        5l       18w      813c http://192.168.194.217/assets/images/img-sprite.png
+200      GET       62l      341w    23972c http://192.168.194.217/assets/images/c2.jpg
+200      GET        4l       10w      446c http://192.168.194.217/assets/images/close.png
+200      GET       53l      270w    21125c http://192.168.194.217/assets/images/c3.jpg
+200      GET      523l     1598w    13797c http://192.168.194.217/assets/js/smoothscroll.js
+200      GET      109l      607w    51773c http://192.168.194.217/assets/images/g2.jpg
+200      GET       61l      385w    38844c http://192.168.194.217/assets/images/g7.jpg
+200      GET       60l      340w    39470c http://192.168.194.217/assets/images/g1.jpg
+200      GET       59l      360w    39689c http://192.168.194.217/assets/images/g6.jpg
+200      GET       74l      428w    38903c http://192.168.194.217/assets/images/c1.jpg
+200      GET       82l      483w    51278c http://192.168.194.217/assets/images/male.jpg
+200      GET      118l      723w    52973c http://192.168.194.217/assets/images/g4.jpg
+200      GET       64l      474w    47881c http://192.168.194.217/assets/images/g5.jpg
+200      GET      150l      762w    62512c http://192.168.194.217/assets/images/22.jpg
+200      GET       55l      385w    42263c http://192.168.194.217/assets/images/g3.jpg
+200      GET      186l     1011w    87712c http://192.168.194.217/assets/images/g8.jpg
+200      GET        7l      662w    58072c http://192.168.194.217/assets/js/bootstrap.min.js
+200      GET        2l     1044w    69917c http://192.168.194.217/assets/js/jquery-3.3.1.min.js
+200      GET       38l     1478w    93077c http://192.168.194.217/assets/js/lightbox-plus-jquery.min.js
+200      GET      392l     2209w   177523c http://192.168.194.217/assets/fonts/fontawesome-webfont.woff
+200      GET      247l     1884w   140239c http://192.168.194.217/assets/images/2.jpg
+200      GET      288l     1759w   139600c http://192.168.194.217/assets/fonts/fontawesome-webfont.woff2
+200      GET     2574l     4782w   258854c http://192.168.194.217/assets/fonts/FontAwesome.otf
+200      GET      449l     2872w   245915c http://192.168.194.217/assets/images/4.jpg
+200      GET     1452l     5977w   212322c http://192.168.194.217/assets/fonts/fontawesome-webfont.ttf
+200      GET     1452l     5979w   212524c http://192.168.194.217/assets/fonts/fontawesome-webfont.eot
+301      GET        9l       28w      330c http://192.168.194.217/assets/fonts/blog => http://192.168.194.217/assets/fonts/blog/
+200      GET    12222l    29645w   282940c http://192.168.194.217/assets/css/style-starter.css
+200      GET     1072l     6024w   466266c http://192.168.194.217/assets/images/1.jpg
+200      GET     2671l    62869w   444379c http://192.168.194.217/assets/fonts/fontawesome-webfont.svg
+200      GET     1285l     8371w   684097c http://192.168.194.217/assets/images/3.jpg
+301      GET        9l       28w      316c http://192.168.194.217/css => http://192.168.194.217/css/
+301      GET        9l       28w      319c http://192.168.194.217/images => http://192.168.194.217/images/
+301      GET        9l       28w      315c http://192.168.194.217/js => http://192.168.194.217/js/
+301      GET        9l       28w      341c http://192.168.194.217/assets/fonts/blog/wp-content => http://192.168.194.217/assets/fonts/blog/wp-content/
+301      GET        9l       28w      342c http://192.168.194.217/assets/fonts/blog/wp-includes => http://192.168.194.217/assets/fonts/blog/wp-includes/
+301      GET        9l       28w      339c http://192.168.194.217/assets/fonts/blog/wp-admin => http://192.168.194.217/assets/fonts/blog/wp-admin/

@@ -1,0 +1,121 @@
+_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+         WordPress Security Scanner by the WPScan Team
+                         Version 3.8.27
+       Sponsored by Automattic - https://automattic.com/
+       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+
+[32m[+][0m URL: http://blogger.pg/assets/fonts/blog/ [192.168.194.217]
+[32m[+][0m Started: Thu Dec 19 02:09:25 2024
+
+Interesting Finding(s):
+
+[32m[+][0m Headers
+ | Interesting Entry: Server: Apache/2.4.18 (Ubuntu)
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[32m[+][0m XML-RPC seems to be enabled: http://blogger.pg/assets/fonts/blog/xmlrpc.php
+ | Found By: Link Tag (Passive Detection)
+ | Confidence: 100%
+ | Confirmed By: Direct Access (Aggressive Detection), 100% confidence
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+
+[32m[+][0m WordPress readme found: http://blogger.pg/assets/fonts/blog/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[32m[+][0m Upload directory has listing enabled: http://blogger.pg/assets/fonts/blog/wp-content/uploads/
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[32m[+][0m The external WP-Cron seems to be enabled: http://blogger.pg/assets/fonts/blog/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[32m[+][0m WordPress version 4.9.8 identified (Insecure, released on 2018-08-02).
+ | Found By: Rss Generator (Passive Detection)
+ |  - http://blogger.pg/assets/fonts/blog/?feed=rss2, <generator>https://wordpress.org/?v=4.9.8</generator>
+ |  - http://blogger.pg/assets/fonts/blog/?feed=comments-rss2, <generator>https://wordpress.org/?v=4.9.8</generator>
+
+[32m[+][0m WordPress theme in use: poseidon
+ | Location: http://blogger.pg/assets/fonts/blog/wp-content/themes/poseidon/
+ | Last Updated: 2024-01-25T00:00:00.000Z
+ | Readme: http://blogger.pg/assets/fonts/blog/wp-content/themes/poseidon/readme.txt
+ | [33m[!][0m The version is out of date, the latest version is 2.4.0
+ | Style URL: http://blogger.pg/assets/fonts/blog/wp-content/themes/poseidon/style.css?ver=2.1.1
+ | Style Name: Poseidon
+ | Style URI: https://themezee.com/themes/poseidon/
+ | Description: Poseidon is an elegant designed WordPress theme featuring a splendid fullscreen image slideshow. The clean typography and spacious white layout makes it great to share your stories. You can use the theme as simple blog or easily create a news website with the widget-based Magazine Homepage template.
+ | Author: ThemeZee
+ | Author URI: https://themezee.com
+ | License: GNU General Public License v2 or later
+ | License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ | Tags: two-columns, custom-background, custom-header, custom-logo, custom-menu, blog, news, editor-style, block-styles, rtl-language-support, featured-image-header, featured-images, flexible-header, custom-colors, full-width-template, sticky-post, threaded-comments, translation-ready, theme-options, one-column, left-sidebar, right-sidebar, three-columns
+ | Text Domain: poseidon
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ |
+ | Version: 2.1.1 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - http://blogger.pg/assets/fonts/blog/wp-content/themes/poseidon/style.css?ver=2.1.1, Match: 'Version: 2.1.1'
+
+
+[34m[i][0m Plugin(s) Identified:
+
+[32m[+][0m akismet
+ | Location: http://blogger.pg/assets/fonts/blog/wp-content/plugins/akismet/
+ | Last Updated: 2024-11-19T02:02:00.000Z
+ | Readme: http://blogger.pg/assets/fonts/blog/wp-content/plugins/akismet/readme.txt
+ | [33m[!][0m The version is out of date, the latest version is 5.3.5
+ |
+ | Found By: Known Locations (Aggressive Detection)
+ |  - http://blogger.pg/assets/fonts/blog/wp-content/plugins/akismet/, status: 200
+ |
+ | Version: 4.0.8 (100% confidence)
+ | Found By: Readme - Stable Tag (Aggressive Detection)
+ |  - http://blogger.pg/assets/fonts/blog/wp-content/plugins/akismet/readme.txt
+ | Confirmed By: Readme - ChangeLog Section (Aggressive Detection)
+ |  - http://blogger.pg/assets/fonts/blog/wp-content/plugins/akismet/readme.txt
+
+[32m[+][0m wpdiscuz
+ | Location: http://blogger.pg/assets/fonts/blog/wp-content/plugins/wpdiscuz/
+ | Last Updated: 2024-10-14T17:02:00.000Z
+ | Readme: http://blogger.pg/assets/fonts/blog/wp-content/plugins/wpdiscuz/readme.txt
+ | [33m[!][0m The version is out of date, the latest version is 7.6.27
+ |
+ | Found By: Known Locations (Aggressive Detection)
+ |  - http://blogger.pg/assets/fonts/blog/wp-content/plugins/wpdiscuz/, status: 200
+ |
+ | Version: 7.0.4 (80% confidence)
+ | Found By: Readme - Stable Tag (Aggressive Detection)
+ |  - http://blogger.pg/assets/fonts/blog/wp-content/plugins/wpdiscuz/readme.txt
+
+
+[34m[i][0m No Config Backups Found.
+
+[33m[!][0m No WPScan API Token given, as a result vulnerability data has not been output.
+[33m[!][0m You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
+
+[32m[+][0m Finished: Thu Dec 19 02:24:24 2024
+[32m[+][0m Requests Done: 108340
+[32m[+][0m Cached Requests: 37
+[32m[+][0m Data Sent: 31.876 MB
+[32m[+][0m Data Received: 14.582 MB
+[32m[+][0m Memory used: 495.273 MB
+[32m[+][0m Elapsed time: 00:14:58
