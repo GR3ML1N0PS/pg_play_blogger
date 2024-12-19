@@ -319,4 +319,3 @@ Let's see the `proof.txt`:
 ```
 cat /root/proof.txt
 ```
->>>>>>> 973cb6a03a9300476055ac5dc831eb06761d7cb7
