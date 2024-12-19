@@ -1,10 +1,6 @@
 # Blogger [Proving Grounds Play]
 
-<<<<<<< HEAD
 <sub>_This is a raw write-up. It accounts for every step taken throughout the challenge, whether or not it was successful. So, expect a lot of rabbitholes and frustration. At the time of writing this, I don't even know if I've solved the challenge myself. You might see a flag somewhere titled **Assisted by [write-up link]** which means I used someone else's write-up to complete the challenge. Being a responsible learner, I'm trying my best to accept as little help as possible and only when I'm out of ideas._</sub> 
-=======
-<sub>_This is a raw write-up. It accounts for every step taken throughout the challenge, whether or not it was successful. So, expect a lot of rabbitholes and frustration. At the time of writing this, I don't even know if I've solved the challenge myself. You might see a flag somewhere titled **<sup>Assisted by [write-up link]</sup>** which means I used someone else's write-up to complete the challenge. Being a responsible learner, I'm trying my best to accept as little help as possible and only when I'm out of ideas._</sub> 
->>>>>>> 973cb6a03a9300476055ac5dc831eb06761d7cb7
 
 ## _Manual Exploitation_
 
@@ -78,11 +74,7 @@ host:       192.168.194.217
 filename:   /
 ```
 
-<<<<<<< HEAD
 I don't think any of this is usable, the login form is indeed non-functional, I think. Now that I look at the blog web page again, I see there is a link to a `Log in` page on the bottom of the site. However it routes to `blogger.pg/assets/fonts/blog/wp-login.php`, which we can't reach. If we insert `$targ3t` instead of the domain `blogger.pg`, we will be able to open this page:
-=======
-This POST request went through with no payload, so I don't think any of this is usable, the login form is indeed non-functional, I think. Now that I look at the blog web page again, I see there is a link to a `Log in` page on the bottom of the site. However it routes to `blogger.pg/assets/fonts/blog/wp-login.php`, which we can't reach. If we insert `$targ3t` instead of the domain `blogger.pg`, we will be able to open this page:
->>>>>>> 973cb6a03a9300476055ac5dc831eb06761d7cb7
 
 ```
 firefox $targ3t/assets/fonts/blog/wp-login.php
@@ -108,13 +100,9 @@ hydra -t 12 -l j@m3s -P /usr/share/wordlists/rockyou.txt $targ3t http-post-form 
 
 This doesn't seem to be working as there is no password that matches this username from the `rockyou.txt` list. 
 
-<<<<<<< HEAD
 _<sub>Assisted by [write-up](https://cyberarri.com/2024/03/17/blogger-pg-play-writeup/):</sub>_
 
 Let's try to use a `wpscan` as this is a wordpress website to see if there are any interesting plugins we could use:
-=======
-_<sup>Assisted by [write-up](https://cyberarri.com/2024/03/17/blogger-pg-play-writeup/):</sup>_ Let's try to use a `wpscan` as this is a wordpress website to see if there are any interesting plugins we could use:
->>>>>>> 973cb6a03a9300476055ac5dc831eb06761d7cb7
 
 ```
 wpscan --url http://$targ3t/assets/fonts/blog -t 12 --plugins-detection aggressive -v -o wp.scan
@@ -139,8 +127,6 @@ firefox https://blogger.pg/assets/fonts/blog/?p=29
 ```
 
 And try to attach this `boat.jpg` to a comment and post it.
-<<<<<<< HEAD
-=======
 
 The comment has been made, now I'll listen with `nc` on port `443`:
 
